@@ -1,8 +1,7 @@
 'use client';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-
-
+import { FormEvent } from 'react';
 
 
 
@@ -14,7 +13,7 @@ export default function ProductForm() {
   const [description, setDescription] = useState('');
   const router = useRouter();
 
-  const handleSubmit = (e:any) => {
+  const handleSubmit = (e:FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     
     // Store product details in local storage

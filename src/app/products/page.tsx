@@ -19,7 +19,7 @@ export default function Products() {
 
 
    const router=useRouter()
-   const handleDetail = (productId:any) => {
+   const handleDetail = (productId:string) => {
     router.push(`/products/${productId}`);
   };
 
