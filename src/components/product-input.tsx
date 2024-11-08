@@ -60,7 +60,7 @@ export function ProductInput() {
                   id="price"
                   type="text"
                   placeholder="price"
-                  value={name}
+                  value={price}
                   onChange={(e) => setPrice(e.target.value)}
                   required
                 />
