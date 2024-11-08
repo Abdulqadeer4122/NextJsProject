@@ -4,17 +4,18 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/com
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-
+import { FormEvent } from "react";
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
 export function ProductInput() {
   const [name, setName] = useState('');
+  const [price, setPrice] = useState('');
   const [description, setDescription] = useState('');
   const router = useRouter();
 
-  const handleSubmit = (e:any) => {
+  const handleSubmit = (e:FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     
     // Generate a unique ID for the product
@@ -23,7 +24,7 @@ export function ProductInput() {
     // Store product details in local storage
     const storedProducts = localStorage.getItem('products');
     const products = storedProducts ? JSON.parse(storedProducts) : []; 
-    products.push({ id, name, description });
+    products.push({ id, name, price, description });
     localStorage.setItem('products', JSON.stringify(products));
 
     // Navigate to the products page
@@ -48,6 +49,19 @@ export function ProductInput() {
                   placeholder="name"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
+                  required
+                />
+              </div>
+              </div>
+              <div className="space-y-4">
+              <div className="space-y-2">
+                <Label htmlFor="name">Price</Label>
+                <Input
+                  id="price"
+                  type="text"
+                  placeholder="price"
+                  value={name}
+                  onChange={(e) => setPrice(e.target.value)}
                   required
                 />
               </div>

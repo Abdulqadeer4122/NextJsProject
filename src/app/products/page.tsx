@@ -42,10 +42,10 @@ export default function Products() {
             <Card>
             <CardHeader>
                 <CardTitle>{product['name']}</CardTitle>
-                <CardDescription>{product['description']}</CardDescription>
+                <CardDescription>{product['Price']}</CardDescription>
             </CardHeader>
             <CardContent>
-                <p></p>
+                <p>{product['description']}</p>
             </CardContent>
             <CardFooter>
                 <Button onClick={() => handleDetail(product['id'])}>Check Detail</Button>

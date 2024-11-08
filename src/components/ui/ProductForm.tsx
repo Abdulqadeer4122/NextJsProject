@@ -10,6 +10,7 @@ import { FormEvent } from 'react';
 
 export default function ProductForm() {
   const [name, setName] = useState('');
+  const [price, setPrice] = useState('');
   const [description, setDescription] = useState('');
   const router = useRouter();
 
@@ -19,7 +20,7 @@ export default function ProductForm() {
     // Store product details in local storage
     const storedProducts = localStorage.getItem('products');
     const products = storedProducts ? JSON.parse(storedProducts) : []; 
-    products.push({ name, description });
+    products.push({ name, description,price });
     localStorage.setItem('products', JSON.stringify(products));
 
     // Navigate to the products page
@@ -34,6 +35,15 @@ export default function ProductForm() {
           type="text"
           value={name}
           onChange={(e) => setName(e.target.value)}
+          required
+        />
+      </div>
+      <div>
+        <label>Product Price:</label>
+        <input
+          type="text"
+          value={price}
+          onChange={(e) => setPrice(e.target.value)}
           required
         />
       </div>
